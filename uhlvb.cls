@@ -3,7 +3,7 @@
 
 % Declares itself
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uhlvb}[2019/02/06 A course class suitable for Hasselt University coursework]
+\ProvidesClass{uhlvb}[2020/10/18 A class built to produce lesson preparation forms in the master of education at Hasselt University]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Packages         %
@@ -33,6 +33,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Definition of things   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Open Sans font is easier to read
+\usepackage[default,oldstyle,scale=0.95]{opensans}
 
 % Shorthand for new paragraph
 \newcommand{\npar}{\par\medskip} 
