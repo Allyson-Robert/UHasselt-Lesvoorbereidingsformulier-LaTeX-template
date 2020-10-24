@@ -3,7 +3,7 @@
 
 % Declares itself
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uhlvb}[2020/10/18 A class built to produce lesson preparation forms in the master of education at Hasselt University]
+\ProvidesClass{uhlvb}[2020/10/24 A class built to produce lesson preparation forms in the master of education at Hasselt University]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Packages         %
@@ -65,7 +65,7 @@
 \newcommand{\allCapsPar}[1]{\paragraph{\MakeUppercase{#1}}}
 
 % Align all enumerate environments
-\setlist[enumerate,1]{align=left}
+\setlist[enumerate,1]{align=left,noitemsep}
 
 % Custom lengths
 \newlength{\msize}
