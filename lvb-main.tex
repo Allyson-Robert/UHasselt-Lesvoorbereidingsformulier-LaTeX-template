@@ -1,4 +1,8 @@
-\documentclass{uhlvb}
+% Remove 'showhelp' if you want to remove the lightly coloured helping text. 
+% Remove 'showextra' if you want to remove the dark extra explanatory text.
+% Leave the various \help commands throughout the document to make sure that 
+% the correct text will show up at all times. 
+\documentclass[showextra,showhelp]{uhlvb}
 
 % Enter all the required identification information below. They will
 % automatically be added in the pdfdocument in the 'Identificatie'
@@ -53,5 +57,7 @@
     \input{Lesvoorbereiding/schema}
     
     \section{Bijlagen}
-
+    \helpbijlagen
+    % Import attachments which you want to import here
+    
 \end{document}

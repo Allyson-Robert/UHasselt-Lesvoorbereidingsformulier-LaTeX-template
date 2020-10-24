@@ -26,16 +26,33 @@
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage[landscape,margin=0.5in,footskip=5mm]{geometry}
 
+% Open Sans font is easier to read
+\RequirePackage[default,oldstyle,scale=0.95]{opensans}
+
 % References and links
 \RequirePackage[colorlinks=true, linktoc=all]{hyperref}
 \RequirePackage[noabbrev]{cleveref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Option Handling      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\if@showhelp
+\@showhelpfalse
+
+\DeclareOption{showhelp}{\@showhelptrue}
+
+\newif\if@showextra
+\@showextrafalse
+
+\DeclareOption{showextra}{\@showextratrue}
+
+\DeclareOption*{\OptionNotUsed}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Definition of things   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Open Sans font is easier to read
-\usepackage[default,oldstyle,scale=0.95]{opensans}
 
 % Shorthand for new paragraph
 \newcommand{\npar}{\par\medskip} 
@@ -45,7 +62,7 @@
 
 % Switch to uppercase
 \newcommand{\upperC}[1]{\expandafter\MakeUppercase\expandafter{#1}}
-\newcommand{\allCapsPar}[1]{\paragraph{\upperC{#1}}}
+\newcommand{\allCapsPar}[1]{\paragraph{\MakeUppercase{#1}}}
 
 % Align all enumerate environments
 \setlist[enumerate,1]{align=left}
@@ -66,6 +83,31 @@
 
 % Colour
 \colorlet{mygray}{black!20}
+
+% Helping/Informational text
+\if@showhelp
+    \newcommand{\helpingtext}[1]{
+        \begingroup
+            \scriptsize
+            \color{black!50!}
+            #1
+        \endgroup
+    }
+\else
+    \newcommand{\helpingtext}[1]{}
+\fi
+
+\if@showextra
+    \newcommand{\extratext}[1]{
+        \begingroup
+            \scriptsize
+            \color{black!50!}
+            \textbf{#1}
+        \endgroup
+    }
+\else
+    \newcommand{\extratext}[1]{}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   CONTEXT   %
@@ -164,6 +206,7 @@
         \noindent\colorbox{mygray}{
             \noindent\begin{minipage}{267.4mm}
                 \textbf{#1}
+                \helplesfase
             \end{minipage}
         }
     }\npar
@@ -183,10 +226,10 @@
     \noindent\colorbox{mygray}{%
         \begin{lesdeel}{
             \textbf{Lesdoel(en)} \\
-            Aan welke lesdoelen werk je tijdens de verschillende lesfasen?
+            {Aan welke lesdoelen werk je tijdens de verschillende lesfasen?}
         }
             \textbf{Onderwijs- en leeractiviteiten} \\
-            Welke onderwijs- en leeractiviteiten organiseer je tijdens de verschillende lesfasen?
+            {Welke onderwijs- en leeractiviteiten organiseer je tijdens de verschillende lesfasen?}
         \end{lesdeel}%
     }
 }
@@ -198,5 +241,10 @@
     \begin{minipage}[b]{1in}
         \includegraphics[width=1in]{UHasselt_Logo.jpg}
     \end{minipage}
+    \documenthelp
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shorthand for helping texts %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{uhlvb_helptext}
