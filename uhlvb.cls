@@ -3,7 +3,7 @@
 
 % Declares itself
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uhlvb}[2020/10/24 A class built to produce lesson preparation forms in the master of education at Hasselt University]
+\ProvidesClass{uhlvb}[2020/10/18 A class built to produce lesson preparation forms in the master of education at Hasselt University]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Packages         %
@@ -46,6 +46,11 @@
 
 \DeclareOption{showextra}{\@showextratrue}
 
+\newif\if@darkmode
+\@darkmodefalse
+
+\DeclareOption{darkmode}{\@darkmodetrue}
+
 \DeclareOption*{\OptionNotUsed}
 \ProcessOptions\relax
 
@@ -84,7 +89,7 @@
 % Colour
 \colorlet{mygray}{black!20}
 
-% Helping/Informational text
+% Helping/Informational text visible only when the option is added
 \if@showhelp
     \newcommand{\helpingtext}[1]{
         \begingroup
@@ -107,6 +112,12 @@
     }
 \else
     \newcommand{\extratext}[1]{}
+\fi
+
+% Make the PDF darkmode for editing LATE AT NIGHT when the option is added
+\if@darkmode
+    \pagecolor[rgb]{0.05,0.05,0.05}
+    \color[rgb]{0.5,0.5,0.5}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +203,7 @@
 % Lesdeel definition
 \newenvironment{lesdeel}[1]{
     \begin{minipage}[t]{\lesdoelwidth}
-        #1
+        #1~
     \end{minipage}\hspace{\lesspacingwidth}%
     \begin{minipage}[t]{\lesactiviteitwidth}
 }{

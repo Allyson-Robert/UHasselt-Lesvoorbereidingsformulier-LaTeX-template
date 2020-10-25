@@ -17,3 +17,13 @@ Any other class option will be ignored
 showextra: Shows a short helpful description for most sections
 
 showhelp: Shows an extensive explanation of what is expected of the student for most sections
+
+darkmode: When added the PDF is printed as black with gray writing for ease of reading in dark environments.
+Do not forget to disable this feature before printing.
+
+## Features to add:
+1. Commands to emphasize questions, answers and actions
+2. Commands for particular lesson types (such as OLG)
+3. Automatic numbering of the `lesdoelen' according to their type
+4. Automatic referencing to the lesdoelen
+5. Add a way to differentiate between different 'lesdelen' in a 'lesfase'. They seem continuous at the moment but it would be helpful to differentiate them from one another in a clear way.
