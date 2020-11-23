@@ -27,3 +27,4 @@ Do not forget to disable this feature before printing.
 3. Automatic numbering of the `lesdoelen' according to their type
 4. Automatic referencing to the lesdoelen
 5. Add a way to differentiate between different 'lesdelen' in a 'lesfase'. They seem continuous at the moment but it would be helpful to differentiate them from one another in a clear way.
+6. Commands for each of: lesdoelen references, leerinhouden, werkvormen and, groeperingsvorm.

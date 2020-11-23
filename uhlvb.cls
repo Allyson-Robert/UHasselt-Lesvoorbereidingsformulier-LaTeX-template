@@ -31,7 +31,7 @@
 
 % References and links
 \RequirePackage[colorlinks=true, linktoc=all]{hyperref}
-\RequirePackage[noabbrev]{cleveref}
+\RequirePackage[noabbrev,dutch]{cleveref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option Handling      %
@@ -119,6 +119,15 @@
     \pagecolor[rgb]{0.05,0.05,0.05}
     \color[rgb]{0.5,0.5,0.5}
 \fi
+
+% Allow lesdoelen to be referenced explicitly
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    #2%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   CONTEXT   %
