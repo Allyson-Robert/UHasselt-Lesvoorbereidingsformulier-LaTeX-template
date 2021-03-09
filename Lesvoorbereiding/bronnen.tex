@@ -3,15 +3,32 @@
 % that anything following the \allCapsPar{} command will be put on the 
 % same line, unless an environment is begun.
 
-\section{Bronnen, materiaal, infrastructuur en veiligheid}
+\begingroup
+\begin{frame}
+
+\Bronnen
+
+% Referencing in bib file
 \allCapsPar{Bronnen}
 \helpbronnen
 
+\printbibliography[heading=none]
+\nocite{*}
+
+% List all provided materials
 \allCapsPar{Didactisch materiaal}
 \helpdidactmat
+n.v.t.
 
+% List available infrastructure 
 \allCapsPar{Infrastructuur}
 \helpinfrastructuur
+n.v.t.
 
+% List any specific points of attention regarding teacher or student safety
 \allCapsPar{Veiligheid} 
 \helpveiligheid
+n.v.t.
+
+\end{frame}
+\endgroup

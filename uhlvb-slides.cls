@@ -3,35 +3,30 @@
 
 % Declares itself
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uhlvb}[2020/10/18 A class built to produce lesson preparation forms in the master of education at Hasselt University]
+\ProvidesClass{uhlvb-slides}[2020/10/18 A class built to produce lesson preparation forms in the master of education at Hasselt University]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Packages         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\LoadClass[11pt, a4paper]{article}
+\LoadClass[aspectratio=169,t]{beamer}
 
 %% Language package
 \RequirePackage[dutch]{babel}
-
-% Get access to \theauthor
-\RequirePackage{titling}
 
 % Layout definition
 \RequirePackage{float}
 \RequirePackage{graphicx}
 \RequirePackage{tabularx}
-\RequirePackage{enumitem}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[explicit]{titlesec}
-\RequirePackage[dvipsnames,table]{xcolor}
-\RequirePackage[landscape,margin=0.5in,footskip=5mm]{geometry}
+\RequirePackage[backend=biber,style=apa]{biblatex}
+% \RequirePackage[dvipsnames,table]{xcolor}
 
 % Open Sans font is easier to read
 \RequirePackage[default,oldstyle,scale=0.95]{opensans}
 
 % References and links
-\RequirePackage[colorlinks=true, linktoc=all]{hyperref}
-\RequirePackage[noabbrev,dutch]{cleveref}
+% \RequirePackage[colorlinks=true, linktoc=all]{hyperref}
+% \RequirePackage[noabbrev,dutch]{cleveref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option Handling      %
@@ -67,32 +62,29 @@
 
 % Switch to uppercase
 \newcommand{\upperC}[1]{\expandafter\MakeUppercase\expandafter{#1}}
-\newcommand{\allCapsPar}[1]{\paragraph{\MakeUppercase{#1}}}
-
-% Align all enumerate environments
-\setlist[enumerate,1]{align=left,noitemsep}
+\newcommand{\allCapsPar}[1]{\MakeUppercase{\textbf{#1}}}
 
 % Custom lengths
 \newlength{\msize}
 \setlength{\msize}{245.5mm}
 
 \newlength{\thirds}
-\setlength{\thirds}{3.525in}
+\setlength{\thirds}{50mm}
 \newlength{\tabtitle}
-\setlength{\tabtitle}{29mm}
+\setlength{\tabtitle}{16mm}
 \newlength{\tabcontent}
-\setlength{\tabcontent}{54mm}
+\setlength{\tabcontent}{28mm}
 \newlength{\pagelen}
 \setlength{\pagelen}{3\thirds}
 \newlength{\titlelen}
-\setlength{\titlelen}{\msize}
+\setlength{\titlelen}{135mm}
 
 \newlength{\lesdoelwidth}
-\setlength{\lesdoelwidth}{70.5mm}
+\setlength{\lesdoelwidth}{30mm}
 \newlength{\lesactiviteitwidth}
-\setlength{\lesactiviteitwidth}{188mm}
+\setlength{\lesactiviteitwidth}{115mm}
 \newlength{\lesspacingwidth}
-\setlength{\lesspacingwidth}{10mm}
+\setlength{\lesspacingwidth}{6mm}
 
 % Colour
 \colorlet{mygray}{black!20}
@@ -137,10 +129,16 @@
 }
 \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set slide left and right margins 
+\setbeamersize{text margin left=3mm}
+\setbeamersize{text margin right=3mm}
+
+\renewcommand*{\bibfont}{\scriptsize}
+
+%%%%%%%%%%%%%%%
 %   CONTEXT   %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand*{\theauthor}{Insert \textbackslash author\{\}}
+%%%%%%%%%%%%%%%
+% \newcommand*{\theauthor}{Insert \textbackslash author\{\}}
 % Student Info
 \newcommand*{\lesonderwerp}[1]{\gdef\thelesonderwerp{#1}}
 \newcommand*{\thelesonderwerp}{Insert \textbackslash lesonderwerp\{\}}
@@ -219,76 +217,60 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 % Custom environments %
 %%%%%%%%%%%%%%%%%%%%%%%
+% Lesfase definition
+\newenvironment<>{lesfase}[1]{%\
+    \begin{beamercolorbox}[wd=\textwidth,rounded=true,shadow=true]{lesfase}
+        \textbf{#1}
+    \end{beamercolorbox}
+}
 
 % Lesdeel definition
 \newenvironment{lesdeel}[1]{
-    \begin{minipage}[t]{\lesdoelwidth}
-        #1~
-    \end{minipage}\hspace{\lesspacingwidth}%
-    \begin{minipage}[t]{\lesactiviteitwidth}
-    % \vspace{-3.5mm}
+    \blfootnote{#1}
 }{
-    \end{minipage}%
-    \npar
 } 
 
-% Lesfase definition
-\newcommand{\lesfase}[1]{
-    \npar{
-        \noindent\colorbox{mygray}{
-            \noindent\begin{minipage}{267.4mm}
-                \textbf{#1}
-                \helplesfase
-            \end{minipage}
-        }
-    }\npar
-}
+\makeatletter
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+\makeatother
 
-% Commands for an OLG 
-\newcommand{\startolg}{\begin{enumerate}[font=\bfseries, label=\arabic*., wide,labelindent=0pt,itemsep=0pt]}
+
+% Commands for an OLG (ignore answers in slide mode)
+\newcommand{\startolg}{\begin{enumerate}}
 \newcommand{\stopolg}{\end{enumerate}}
 
-\newcommand{\vraag}[1]{\item[Lkr vraagt]{#1}}
-\newcommand{\antwoord}[1]{\item[Lln antwoord]{#1}}
+\newcommand{\vraag}[1]{\item{#1}}
+\newcommand{\antwoord}[1]{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % Custom layout elements %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{lesfase}{fg=black,bg=mygray}
 
-% Definition of the title of the lesschema table
-\newcommand{\lesschematitel}{
-    \noindent\colorbox{mygray}{%
-        \begin{lesdeel}{
-            \textbf{Lesdoel(en)} \\
-            {Aan welke lesdoelen werk je tijdens de verschillende lesfasen?}
-        }
-            \textbf{Onderwijs- en leeractiviteiten} \\
-            {Welke onderwijs- en leeractiviteiten organiseer je tijdens de verschillende lesfasen?}
-        \end{lesdeel}%
-    }
+\setbeamertemplate{headline}{
+    \vspace{1mm}
+    \hspace{3mm}
+    \begin{minipage}[b]{\titlelen}
+    \small{\textbf{\color{red} LESVOORBEREIDINGSFORMULIER \\ EDUCATIEVE MASTEROPLEIDINGEN}}
+    \end{minipage}%
+    \begin{minipage}[t]{15mm}
+        \includegraphics[width=15mm]{UHasselt_Logo.jpg}
+    \end{minipage}
+    \hspace{3mm}
+    \vspace{1mm}
 }
 
-\newcommand{\lvbtitel}{
-    \begin{minipage}[b]{\msize}
-    \LARGE{\textbf{\color{red} LESVOORBEREIDINGSFORMULIER \\ EDUCATIEVE MASTEROPLEIDINGEN}}
-    \end{minipage}
-    \begin{minipage}[b]{1in}
-        \includegraphics[width=1in]{UHasselt_Logo.jpg}
-    \end{minipage}
-    \documenthelp
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Transform article commands so they behave %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSection{}
+\newcommand{\lvbtitel}{}
+\newcommand{\identspacer}{}
+\newcommand{\Identificatie}{\tiny}
+\newcommand{\Lesdoelen}{\scriptsize\let\small\scriptsize}
+\newcommand{\Bronnen}{\scriptsize}
+\newcommand{\lesschematitel}{}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Compatibility %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Compatibility with the slide mode requires frame to be defined but do nothing
-\renewenvironment{frame}{}{}
-\newcommand{\insertauthor}{\theauthor}
-\newcommand{\identspacer}{\vspace{-5mm}}
-\newcommand{\Identificatie}{\section{Identificatie}}
-\newcommand{\Lesdoelen}{\section{Lesonderwerp, lesdoelen en leerrendement}\helponderwerpsection}
-\newcommand{\Bronnen}{\section{Bronnen, materiaal, infrastructuur en veiligheid}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Shorthand for helping texts %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -3,7 +3,10 @@
 % sheet (currently located at 'Lesvoorbereiding/info.tex'. Do not change this
 % unless you specifically want to change the way this segment looks
 
-\section{Identificatie}
+\begingroup
+\begin{frame}
+
+\Identificatie
 \noindent\colorbox{mygray}{%
     \begin{minipage}[b]{\thirds}
         \textbf{Student}
@@ -14,12 +17,12 @@
     \begin{minipage}[b]{\thirds}
         \textbf{Stagebegeleider (UH)}
     \end{minipage}
-}\vspace{-5mm}
+}\identspacer
 
 \begin{minipage}[t]{\thirds}
     \begin{table}[H]
-        \begin{tabular}{p{29mm}|p{54mm}}
-        Naam  & \theauthor \\
+        \begin{tabular}{p{\tabtitle}|p{\tabcontent}}
+        Naam  & \insertauthor \\
         Opleiding &  \theopleiding \\
         Vakdidactiek(en) &  \thevakdidactiek \\
         Stage-onderdeel & \thestageonderdeel
@@ -28,7 +31,7 @@
 \end{minipage}%
 \begin{minipage}[t]{\thirds}
     \begin{table}[H]
-        \begin{tabular}{p{29mm}|p{54mm}}
+        \begin{tabular}{p{\tabtitle}|p{\tabcontent}}
         Naam  & \thementornaam \\
         E-mailadres  & \thementormail
         \end{tabular}%
@@ -36,7 +39,7 @@
 \end{minipage}%
 \begin{minipage}[t]{\thirds}
     \begin{table}[H]
-        \begin{tabular}{p{29mm}|p{54mm}}
+        \begin{tabular}{p{\tabtitle}|p{\tabcontent}}
         Naam  & \thebegeleidernaam \\
         E-mailadres  & \thebegeleidermail
         \end{tabular}%
@@ -54,11 +57,11 @@
     \begin{minipage}[b]{\thirds}
         \textbf{Stageschool}
     \end{minipage}
-}\vspace{-5mm}
+}\identspacer
 
 \begin{minipage}[t]{\thirds}
     \begin{table}[H]
-        \begin{tabular}{p{29mm}|p{54mm}}
+        \begin{tabular}{p{\tabtitle}|p{\tabcontent}}
         Naam  (\& Graad) & \theklasnaam \\
         Onderwijsvorm  & \theonderwijsvorm \\
         Finaliteit  & \thefinaliteit \\
@@ -69,7 +72,7 @@
 \end{minipage}%
 \begin{minipage}[t]{\thirds}
     \begin{table}[H]
-        \begin{tabular}{p{29mm}|p{54mm}}
+        \begin{tabular}{p{\tabtitle}|p{\tabcontent}}
         Datum  & \thelesdatum \\
         Lesuur  & \thelesuur \\
         Lokaal  & \theleslokaal \\
@@ -79,16 +82,19 @@
 \end{minipage}%
 \begin{minipage}[t]{\thirds}
     \begin{table}[H]
-        \begin{tabular}{p{29mm}|p{54mm}}
+        \begin{tabular}{p{\tabtitle}|p{\tabcontent}}
         Naam  & \theschoolnaam \\
         Adres & \theschooladres \\
         Onderwijsnet & \theschoolnet
         \end{tabular}%
     \end{table}%
 \end{minipage}
+\npar
 
 \noindent\colorbox{mygray}{%
-    \begin{minipage}{268.25mm}
+    \begin{minipage}{\pagelen}
         \textbf{Leerplannummer en koepel}: \thekoepel ~- \theleerplannummer ~- \theleerplanurl
     \end{minipage}
 }
+\end{frame}
+\endgroup
