@@ -289,6 +289,7 @@
 \newcommand{\Identificatie}{\section{Identificatie}}
 \newcommand{\Lesdoelen}{\section{Lesonderwerp, lesdoelen en leerrendement}\helponderwerpsection}
 \newcommand{\Bronnen}{\section{Bronnen, materiaal, infrastructuur en veiligheid}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Shorthand for helping texts %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
