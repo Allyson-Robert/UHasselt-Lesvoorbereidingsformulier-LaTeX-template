@@ -25,6 +25,7 @@
 \RequirePackage[explicit]{titlesec}
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage[landscape,margin=0.5in,footskip=5mm]{geometry}
+\RequirePackage[final]{pdfpages}
 
 % Open Sans font is easier to read
 \RequirePackage[default,oldstyle,scale=0.95]{opensans}
@@ -289,6 +290,7 @@
 \newcommand{\Identificatie}{\section{Identificatie}}
 \newcommand{\Lesdoelen}{\section{Lesonderwerp, lesdoelen en leerrendement}\helponderwerpsection}
 \newcommand{\Bronnen}{\section{Bronnen, materiaal, infrastructuur en veiligheid}}
+\newcommand{\slidesbijlage}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Shorthand for helping texts %

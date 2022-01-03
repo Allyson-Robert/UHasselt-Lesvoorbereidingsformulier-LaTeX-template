@@ -19,6 +19,7 @@
 \RequirePackage{tabularx}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[backend=biber,style=apa]{biblatex}
+\RequirePackage[final]{pdfpages}
 % \RequirePackage[dvipsnames,table]{xcolor}
 
 % Open Sans font is easier to read
@@ -260,6 +261,10 @@
     \vspace{1mm}
 }
 
+\newcommand{\slidesbijlage}{
+    \setbeamertemplate{headline}{}
+    \setbeamercolor{background canvas}{bg=} % removee
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Transform article commands so they behave %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
