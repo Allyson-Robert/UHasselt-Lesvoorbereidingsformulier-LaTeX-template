@@ -26,6 +26,7 @@
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage[landscape,margin=0.5in,footskip=5mm]{geometry}
 \RequirePackage[final]{pdfpages}
+\RequirePackage{soul}
 
 % Open Sans font is easier to read
 \RequirePackage[default,oldstyle,scale=0.95]{opensans}
@@ -137,6 +138,10 @@
     \phantomsection\label{#1}\endgroup
 }
 \makeatother
+
+% Todo command (Change highlight colour)
+\sethlcolor{cyan}
+\newcommand{\todo}[1]{\hl{FILL: #1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   CONTEXT   %

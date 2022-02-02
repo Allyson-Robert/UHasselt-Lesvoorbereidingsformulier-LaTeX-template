@@ -20,6 +20,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[backend=biber,style=apa]{biblatex}
 \RequirePackage[final]{pdfpages}
+\RequirePackage{soul}
 % \RequirePackage[dvipsnames,table]{xcolor}
 
 % Open Sans font is easier to read
@@ -135,6 +136,17 @@
 \setbeamersize{text margin right=3mm}
 
 \renewcommand*{\bibfont}{\scriptsize}
+
+% Todo command (Change highlight colour)
+\makeatletter
+\let\HL\hl
+\renewcommand\hl{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color
+  \HL}
+\makeatother
+\sethlcolor{cyan}
+\newcommand{\todo}[1]{\hl{FILL: #1}}
 
 %%%%%%%%%%%%%%%
 %   CONTEXT   %
